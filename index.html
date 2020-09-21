@@ -48,7 +48,7 @@ THE SOFTWARE.
 
 <script>
     if (navigator.geolocation) {
-        //        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
@@ -71,7 +71,7 @@ THE SOFTWARE.
         //        var wp3Lat = 8.5228002;
         //        var wp3Long = 76.949132;
         console.log("Current Latitude=" + currLat + " and Current Longitude=" + currLong);
-        if (distance(currLong, currLat, wp1Long, wp1Lat) < 1) {
+        if (distance(currLong, currLat, wp1Long, wp1Lat) < 0.1) {
             document.getElementById("mv").setAttribute("src", "models/i.glb");
             document.getElementById("mv").setAttribute("ios-src", "models/i.usdz");
             console.log("yes");
