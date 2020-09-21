@@ -43,7 +43,7 @@ THE SOFTWARE.
 </head>
 
 <body>
-    <div id="x" style="position: absolute"></div>
+    <div id="x" style="position: absolute;bottom: 0"></div>
     <model-viewer id="mv" style="width:100%;height:100%" src="models/ash.glb" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" ios-src="models/ash.usdz"></model-viewer>
 </body>
 
@@ -58,21 +58,19 @@ THE SOFTWARE.
         var currLat = position.coords.latitude;
         var currLong = position.coords.longitude;
 
-        var wp1Lat = 9.4669512;
-        var wp1Long = 76.3373979;
-        //        var wp1Lat = 9.4661273;
-        //        var wp1Long = 76.3379995
-        var wp2Lat = 9.4708945;
-        var wp2Long = 76.3352359;
-        var wp3Lat = 9.4753048;
-        var wp3Long = 76.3262619;
+        //        var wp1Lat = 9.4669512;
+        //        var wp1Long = 76.3373979;
+        //        var wp2Lat = 9.4708945;
+        //        var wp2Long = 76.3352359;
+        //        var wp3Lat = 9.4753048;
+        //        var wp3Long = 76.3262619;
         //ASH
-        //        var wp1Lat = 8.525753;
-        //        var wp1Long = 76.9486096;
-        //        var wp2Lat = 8.5242217;
-        //        var wp2Long = 76.9502917;
-        //        var wp3Lat = 8.5228002;
-        //        var wp3Long = 76.949132;
+        var wp1Lat = 8.525753;
+        var wp1Long = 76.9486096;
+        var wp2Lat = 8.5242217;
+        var wp2Long = 76.9502917;
+        var wp3Lat = 8.5228002;
+        var wp3Long = 76.949132;
         console.log("Current Latitude=" + currLat + " and Current Longitude=" + currLong);
         if (distance(currLong, currLat, wp1Long, wp1Lat) < 0.15) {
             document.getElementById("mv").setAttribute("src", "models/i.glb");
