@@ -43,12 +43,12 @@ THE SOFTWARE.
 </head>
 
 <body>
-    <model-viewer id="mv" style="width:100%;height:100%" src="models/test.glb" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" ios-src="models/test.usdz"></model-viewer>
+    <model-viewer id="mv" style="width:100%;height:100%" src="models/ash.glb" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" ios-src="models/ash.usdz"></model-viewer>
 </body>
 
 <script>
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        //        navigator.geolocation.getCurrentPosition(showPosition);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
@@ -56,14 +56,29 @@ THE SOFTWARE.
     function showPosition(position) {
         var currLat = position.coords.latitude;
         var currLong = position.coords.longitude;
-        var desLat = 9.4661273;
-        var desLong = 76.3379995;
+        var wp1Lat = 9.4661273;
+        var wp1Long = 76.3379995;
+        var wp2Lat = 9.4661273;
+        var wp2Long = 76.3379995;
+        var wp3Lat = 9.4661273;
+        var wp3Long = 76.3379995;
         console.log("Current Latitude=" + currLat + " and Current Longitude=" + currLong);
-        if (distance(currLong, currLat, desLong, desLat) < 0.03) {
-            document.getElementById("mv").setAttribute("src", "models/test2.glb");
+        if (distance(currLong, currLat, wp1Long, wp1Lat) < 1) {
+            document.getElementById("mv").setAttribute("src", "models/i.glb");
+            document.getElementById("mv").setAttribute("ios-src", "models/i.usdz");
             console.log("yes");
+
+            //         else if (distance(currLong, currLat, wp2Long, wp2Lat) < 0.1) {
+            //            document.getElementById("mv").setAttribute("src", "models/l.glb");
+            //            document.getElementById("mv").setAttribute("ios-src", "models/l.usdz");
+            //            console.log("yes");
+            //        } else if (distance(currLong, currLat, wp3Long, wp3Lat) < 0.1) {
+            //            document.getElementById("mv").setAttribute("src", "models/u.glb");
+            //            document.getElementById("mv").setAttribute("ios-src", "models/u.usdz");
+            //            console.log("yes");
         } else {
-            document.getElementById("mv").setAttribute("src", "models/test3.glb");
+            document.getElementById("mv").setAttribute("src", "models/ash.glb");
+            document.getElementById("mv").setAttribute("ios-src", "models/ash.usdz");
             console.log("no");
         }
     }
