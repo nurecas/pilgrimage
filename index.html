@@ -65,16 +65,16 @@ THE SOFTWARE.
         //        var wp3Lat = 9.4753048;
         //        var wp3Long = 76.3262619;
         //ASH
-        var wp1Lat = 8.525753;
-        var wp1Long = 76.9486096;
+        var wp1Lat = 8.525701;
+        var wp1Long = 76.950934;
         var wp2Lat = 8.5242244;
         var wp2Long = 76.9513861;
         var wp3Lat = 8.522822;
         var wp3Long = 76.951317;
         console.log("Current Latitude=" + currLat + " and Current Longitude=" + currLong);
         if (distance(currLong, currLat, wp1Long, wp1Lat) < 0.15) {
-            document.getElementById("mv").setAttribute("src", "models/l.glb");
-            document.getElementById("mv").setAttribute("ios-src", "models/l.usdz");
+            document.getElementById("mv").setAttribute("src", "models/1.glb");
+            document.getElementById("mv").setAttribute("ios-src", "models/1.usdz");
             console.log("yes");
         } else if (distance(currLong, currLat, wp2Long, wp2Lat) < 0.15) {
             document.getElementById("mv").setAttribute("src", "models/i.glb");
