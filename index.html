@@ -44,7 +44,7 @@ THE SOFTWARE.
 
 <body>
     <div id="x" style="position: absolute;bottom: 0"></div>
-    <model-viewer id="mv" style="width:100%;height:100%" src="models/ash.glb" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" ios-src="models/ash.usdz"></model-viewer>
+    <model-viewer id="mv" style="width:100%;height:100%" src="models/ash.glb" loading="lazy" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" ios-src="models/ash.usdz"></model-viewer>
 </body>
 
 <script>
@@ -67,18 +67,18 @@ THE SOFTWARE.
         //ASH
         var wp1Lat = 8.525753;
         var wp1Long = 76.9486096;
-        var wp2Lat = 8.5242217;
-        var wp2Long = 76.9502917;
+        var wp2Lat = 8.5242244;
+        var wp2Long = 76.9513861;
         var wp3Lat = 8.5228002;
         var wp3Long = 76.949132;
         console.log("Current Latitude=" + currLat + " and Current Longitude=" + currLong);
         if (distance(currLong, currLat, wp1Long, wp1Lat) < 0.15) {
-            document.getElementById("mv").setAttribute("src", "models/i.glb");
-            document.getElementById("mv").setAttribute("ios-src", "models/i.usdz");
-            console.log("yes");
-        } else if (distance(currLong, currLat, wp2Long, wp2Lat) < 0.15) {
             document.getElementById("mv").setAttribute("src", "models/l.glb");
             document.getElementById("mv").setAttribute("ios-src", "models/l.usdz");
+            console.log("yes");
+        } else if (distance(currLong, currLat, wp2Long, wp2Lat) < 0.15) {
+            document.getElementById("mv").setAttribute("src", "models/i.glb");
+            document.getElementById("mv").setAttribute("ios-src", "models/i.usdz");
             console.log("yes");
         } else if (distance(currLong, currLat, wp3Long, wp3Lat) < 0.15) {
             document.getElementById("mv").setAttribute("src", "models/u.glb");
