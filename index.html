@@ -1,0 +1,89 @@
+<!--
+The MIT License
+
+Copyright © 2010-2020 Fabin Rasheed
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;900&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <model-viewer id="mv" style="width:100%;height:100%" src="models/test.glb" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" ios-src="models/test.usdz"></model-viewer>
+</body>
+
+<script>
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+
+    function showPosition(position) {
+        var currLat = position.coords.latitude;
+        var currLong = position.coords.longitude;
+        var desLat = 10.8;
+        var desLong = 76.27;
+        console.log("Current Latitude=" + currLat + " and Current Longitude=" + currLong);
+        if (distance(currLong, currLat, desLong, desLat) < 6) {
+            document.getElementById("mv").setAttribute("src", "models/test2.glb");
+            console.log("yes");
+        } else {
+            console.log("no");
+        }
+    }
+
+    function distance(lon1, lat1, lon2, lat2) {
+        var R = 6371; // Radius of the earth in km
+        var dLat = (lat2 - lat1).toRad(); // Javascript functions in radians
+        var dLon = (lon2 - lon1).toRad();
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c; // Distance in km
+        return d;
+    }
+    if (typeof(Number.prototype.toRad) === "undefined") {
+        Number.prototype.toRad = function() {
+            return this * Math.PI / 180;
+        }
+    }
+
+</script>
+
+</html>
