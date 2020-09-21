@@ -43,6 +43,7 @@ THE SOFTWARE.
 </head>
 
 <body>
+    <div id="x" style="position: absolute"></div>
     <model-viewer id="mv" style="width:100%;height:100%" src="models/ash.glb" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" ios-src="models/ash.usdz"></model-viewer>
 </body>
 
@@ -88,6 +89,8 @@ THE SOFTWARE.
             document.getElementById("mv").setAttribute("ios-src", "models/ash.usdz");
             console.log("no");
         }
+
+        x.innerHTML = "Dist to WP1: " + distance(currLong, currLat, wp1Long, wp1Lat) + ". Dist to WP2: " + distance(currLong, currLat, wp2Long, wp2Lat) + ". Dist to WP3: " + distance(currLong, currLat, wp3Long, wp3Lat);
     }
 
     function distance(lon1, lat1, lon2, lat2) {
