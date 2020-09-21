@@ -69,8 +69,8 @@ THE SOFTWARE.
         var wp1Long = 76.950934;
         var wp2Lat = 8.5242244;
         var wp2Long = 76.9513861;
-        var wp3Lat = 8.522822;
-        var wp3Long = 76.951317;
+        var wp3Lat = 8.525876;
+        var wp3Long = 76.948670;
         console.log("Current Latitude=" + currLat + " and Current Longitude=" + currLong);
         if (distance(currLong, currLat, wp1Long, wp1Lat) < 0.15) {
             document.getElementById("mv").setAttribute("src", "models/1.glb");
@@ -81,8 +81,8 @@ THE SOFTWARE.
             document.getElementById("mv").setAttribute("ios-src", "models/i.usdz");
             console.log("yes");
         } else if (distance(currLong, currLat, wp3Long, wp3Lat) < 0.15) {
-            document.getElementById("mv").setAttribute("src", "models/u.glb");
-            document.getElementById("mv").setAttribute("ios-src", "models/u.usdz");
+            document.getElementById("mv").setAttribute("src", "models/a.glb");
+            document.getElementById("mv").setAttribute("ios-src", "models/a.usdz");
             console.log("yes");
         } else {
             document.getElementById("mv").setAttribute("src", "models/ash.glb");
