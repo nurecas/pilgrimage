@@ -56,10 +56,10 @@ THE SOFTWARE.
     function showPosition(position) {
         var currLat = position.coords.latitude;
         var currLong = position.coords.longitude;
-        var desLat = 10.8;
-        var desLong = 76.27;
+        var desLat = 9.465886109999996;
+        var desLong = 76.33799742999997;
         console.log("Current Latitude=" + currLat + " and Current Longitude=" + currLong);
-        if (distance(currLong, currLat, desLong, desLat) < 6) {
+        if (distance(currLong, currLat, desLong, desLat) < 0.001) {
             document.getElementById("mv").setAttribute("src", "models/test2.glb");
             console.log("yes");
         } else {
