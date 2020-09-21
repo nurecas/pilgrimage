@@ -74,15 +74,15 @@ THE SOFTWARE.
         //        var wp3Lat = 8.5228002;
         //        var wp3Long = 76.949132;
         console.log("Current Latitude=" + currLat + " and Current Longitude=" + currLong);
-        if (distance(currLong, currLat, wp1Long, wp1Lat) < 0.1) {
+        if (distance(currLong, currLat, wp1Long, wp1Lat) < 0.15) {
             document.getElementById("mv").setAttribute("src", "models/i.glb");
             document.getElementById("mv").setAttribute("ios-src", "models/i.usdz");
             console.log("yes");
-        } else if (distance(currLong, currLat, wp2Long, wp2Lat) < 0.1) {
+        } else if (distance(currLong, currLat, wp2Long, wp2Lat) < 0.15) {
             document.getElementById("mv").setAttribute("src", "models/l.glb");
             document.getElementById("mv").setAttribute("ios-src", "models/l.usdz");
             console.log("yes");
-        } else if (distance(currLong, currLat, wp3Long, wp3Lat) < 0.1) {
+        } else if (distance(currLong, currLat, wp3Long, wp3Lat) < 0.15) {
             document.getElementById("mv").setAttribute("src", "models/u.glb");
             document.getElementById("mv").setAttribute("ios-src", "models/u.usdz");
             console.log("yes");
