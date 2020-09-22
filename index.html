@@ -65,14 +65,14 @@ THE SOFTWARE.
         //        var wp3Lat = 9.4753048;
         //        var wp3Long = 76.3262619;
         //ASH
-        var wp1Lat = 8.525701;
-        var wp1Long = 76.950934;
+        var wp1Lat = 37.807773;
+        var wp1Long = 122.474880;
         var wp2Lat = 8.5242244;
         var wp2Long = 76.9513861;
         var wp3Lat = 8.525876;
         var wp3Long = 76.948670;
         console.log("Current Latitude=" + currLat + " and Current Longitude=" + currLong);
-        if (distance(currLong, currLat, wp1Long, wp1Lat) < 0.15) {
+        if (distance(currLong, currLat, wp1Long, wp1Lat) < 3) {
             document.getElementById("mv").setAttribute("src", "models/1.glb");
             document.getElementById("mv").setAttribute("ios-src", "models/1.usdz");
             console.log("yes");
@@ -90,7 +90,7 @@ THE SOFTWARE.
             console.log("no");
         }
 
-        x.innerHTML = "Dist to WP1: " + distance(currLong, currLat, wp1Long, wp1Lat) + ". Dist to WP2: " + distance(currLong, currLat, wp2Long, wp2Lat) + ". Dist to WP3: " + distance(currLong, currLat, wp3Long, wp3Lat);
+        //        x.innerHTML = "Dist to WP1: " + distance(currLong, currLat, wp1Long, wp1Lat) + ". Dist to WP2: " + distance(currLong, currLat, wp2Long, wp2Lat) + ". Dist to WP3: " + distance(currLong, currLat, wp3Long, wp3Lat);
     }
 
     function distance(lon1, lat1, lon2, lat2) {
