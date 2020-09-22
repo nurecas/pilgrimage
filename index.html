@@ -44,7 +44,7 @@ THE SOFTWARE.
 
 <body>
     <div id="x" style="position: absolute;bottom: 0"></div>
-    <model-viewer id="mv" style="width:100%;height:100%" src="models/ash.glb" loading="lazy" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" ios-src="models/ash.usdz"></model-viewer>
+    <model-viewer id="mv" style="width:100%;height:100%" src="models/default.glb" loading="lazy" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" ios-src="models/default.usdz"></model-viewer>
 </body>
 
 <script>
@@ -85,8 +85,8 @@ THE SOFTWARE.
             document.getElementById("mv").setAttribute("ios-src", "models/a.usdz");
             console.log("yes");
         } else {
-            document.getElementById("mv").setAttribute("src", "models/ash.glb");
-            document.getElementById("mv").setAttribute("ios-src", "models/ash.usdz");
+            document.getElementById("mv").setAttribute("src", "models/default.glb");
+            document.getElementById("mv").setAttribute("ios-src", "models/default.usdz");
             console.log("no");
         }
 
