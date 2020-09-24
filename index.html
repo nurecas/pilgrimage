@@ -43,65 +43,49 @@ THE SOFTWARE.
 </head>
 
 <body>
-    <div id="x" style="position: absolute;bottom: 0"></div>
-    <model-viewer id="mv" style="width:100%;height:100%" src="models/default.glb" loading="lazy" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" ios-src="models/default.usdz"></model-viewer>
+    <div id="titles" style="position: absolute; background-color:#323232;  border-radius: 0px 0px 50px 0px; width: 30%; padding: 10px; z-index: 10; display: none">
+        <p id="aName" style="color: white; font-family: 'Muli'; font-weight: 900"></p>
+        <p id="pName" style="color: white; font-family: 'Muli'; font-weight: 300"></p>
+    </div>
+    <model-viewer id="mv" style="width:100%;height:100%" src="models/default.glb" loading="lazy" ar ar-modes="webxr scene-viewer quick-look" quick-look-browsers="safari chrome" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" ios-src="models/default.usdz"></model-viewer>
+    <a href="https://www.nurecas.com/pilgrimage" target="_blank"><img src="icons/help.png" style="position: absolute; bottom: 6px; left: 6px; width: 60px; z-index: 10"></a>
 </body>
-
 <script>
+    var maxDistance = 3;
+    var coords = [40.761428, -73.977637, 6.476430, 3.369413, 41.008526, 28.980025, 19.436149, -99.154650, 28.627029, 77.216600, 34.688923, 135.839816, -33.870447, 151.208718, -22.951936, -43.210734, 48.860593, 2.337538];
+    var pNames = ["The Museum of Modern Art", "National Arts Theatre", "Hagia Sophia", "Monumento a la Revolucion", "Jantar Mantar", "Todaiji Temple", "Sydney Tower Eye", "Christ the Redeemer", "The Louvre"];
+    var aNames = ["Zoum", "Haum", "Lorm", "Guvm", "Bolm", "Vilm", "Sopm", "Trovm", "Pilm"];
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        alert("Geolocation is not supported by this browser.");
     }
 
     function showPosition(position) {
         var currLat = position.coords.latitude;
         var currLong = position.coords.longitude;
-
-        //        var wp1Lat = 9.4669512;
-        //        var wp1Long = 76.3373979;
-        //        var wp2Lat = 9.4708945;
-        //        var wp2Long = 76.3352359;
-        //        var wp3Lat = 9.4753048;
-        //        var wp3Long = 76.3262619;
-        //ASH
-        var wp1Lat = 37.410382;
-        var wp1Long = -121.891214;
-        var wp2Lat = 42.346481;
-        var wp2Long = -71.097076;
-        var wp3Lat = 8.525876;
-        var wp3Long = 76.948670;
         console.log("Current Latitude=" + currLat + " and Current Longitude=" + currLong);
-        if (distance(currLong, currLat, wp1Long, wp1Lat) < 3) {
-            document.getElementById("mv").setAttribute("src", "models/1.glb");
-            document.getElementById("mv").setAttribute("ios-src", "models/1.usdz");
-            console.log("yes");
-        } else if (distance(currLong, currLat, wp2Long, wp2Lat) < 3) {
-            document.getElementById("mv").setAttribute("src", "models/1.glb");
-            document.getElementById("mv").setAttribute("ios-src", "models/1.usdz");
-            console.log("yes");
-        } else if (distance(currLong, currLat, wp3Long, wp3Lat) < 0.35) {
-            document.getElementById("mv").setAttribute("src", "models/a.glb");
-            document.getElementById("mv").setAttribute("ios-src", "models/a.usdz");
-            console.log("yes");
-        } else {
-            document.getElementById("mv").setAttribute("src", "models/default.glb");
-            document.getElementById("mv").setAttribute("ios-src", "models/default.usdz");
-            console.log("no");
+        for (var i = 0; i < 9; i++) {
+            if (distance(currLong, currLat, coords[i * 2 + 1], coords[i * 2]) < maxDistance) {
+                document.getElementById("titles").style.display = "block";
+                document.getElementById("mv").setAttribute("src", "models/Avatar" + (i + 1) + ".glb");
+                document.getElementById("mv").setAttribute("ios-src", "models/Avatar" + (i + 1) + ".usdz");
+                pName.innerHTML = pNames[i];
+                aName.innerHTML = aNames[i];
+                console.log(i);
+            }
         }
-
-        //        x.innerHTML = "Dist to WP1: " + distance(currLong, currLat, wp1Long, wp1Lat) + ". Dist to WP2: " + distance(currLong, currLat, wp2Long, wp2Lat) + ". Dist to WP3: " + distance(currLong, currLat, wp3Long, wp3Lat);
     }
 
     function distance(lon1, lat1, lon2, lat2) {
-        var R = 6371; // Radius of the earth in km
-        var dLat = (lat2 - lat1).toRad(); // Javascript functions in radians
+        var R = 6371;
+        var dLat = (lat2 - lat1).toRad();
         var dLon = (lon2 - lon1).toRad();
         var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
             Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) *
             Math.sin(dLon / 2) * Math.sin(dLon / 2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        var d = R * c; // Distance in km
+        var d = R * c;
         return d;
     }
     if (typeof(Number.prototype.toRad) === "undefined") {
